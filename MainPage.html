@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ 
+  <head>
+    <meta charset="UTF-8">
+    <title>Nutrition Calculator</title>
+  </head>
+
+  <body>
+    <!-- Specify JavaScript source -->
+    <script src = "MainPageScript.js"></script>
+
+    <form>
+      Item name : <input type="text" id="id_itemName">
+      Quantity : <input type="text" id="id_quantity"> Unit : 
+      <input list="id_units">
+        <datalist id="id_units">
+            <option value="grams">
+            <option value="oz">
+            <option value="gallons">
+            <option value="lbs">
+        </datalist>
+    </form>
+
+    <div id="myDiv"><h2>Response goes here!</h2></div>
+    <button type="button" onclick="QueryItemFromNutritionX()">Change Content</button>
+  </body>
+
+</html>
