@@ -32,3 +32,8 @@ function LoadXml(requestType,paramString,url,cfunc)
   
   xmlhttp.send(paramString);
 }
+
+function ItemNameResolver()
+{
+   document.getElementById("myDiv").innerHTML = "Hey there Delilah!";
+}

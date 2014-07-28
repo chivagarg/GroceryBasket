@@ -3,6 +3,13 @@
  
   <head>
     <meta charset="UTF-8">
+    <style>
+    table,th,td
+    {
+      border:0px;
+      border-collapse:collapse;
+    }
+    </style>
     <title>Nutrition Calculator</title>
   </head>
 
@@ -10,17 +17,25 @@
     <!-- Specify JavaScript source -->
     <script src = "MainPageScript.js"></script>
 
-    <form>
-      Item name : <input type="text" id="id_itemName">
-      Quantity : <input type="text" id="id_quantity"> Unit : 
-      <input list="id_units">
-        <datalist id="id_units">
-            <option value="grams">
-            <option value="oz">
-            <option value="gallons">
-            <option value="lbs">
-        </datalist>
-    </form>
+    <table style="width:300px">
+      <tr>
+        <td>Brand</td>
+        <td>Item Name</td>    
+        <td>Quantity</td>
+        <td>Unit</td>
+      </tr>
+      <tr>
+        <td><input type="text" id="id_itemName" onkeyup="ItemNameResolver()"></td>    
+        <td><input type="text" id="id_quantity"></td>
+        <td><input type="text" list="id_units">
+          <datalist id="id_units">
+              <option value="grams">
+              <option value="oz">
+              <option value="gallons">
+              <option value="lbs">
+          </datalist></td>
+      </tr>
+    </table>
 
     <div id="myDiv"><h2>Response goes here!</h2></div>
     <button type="button" onclick="QueryItemFromNutritionX()">Change Content</button>
