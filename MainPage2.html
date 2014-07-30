@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script> 
+      $(document).ready(function(){
+        $("#id_querypane").click(function(){
+          $("#id_suggestionspanel").slideDown("slow");
+        });
+      });
+    </script>
+  
+    <style> 
+      #container
+      {
+         position: fixed;
+         top:20%;
+         left:50%;
+         margin-left: -150px;
+      }
+      #id_suggestionspanel,#id_querypane
+      {
+        padding:5px;
+        text-align:center;
+        background-color:#e5eecc;
+        border:solid 1px #c3c3c3;
+      }
+      #id_suggestionspanel
+      {
+        padding:25px;
+        display: none;
+      }
+    </style>
+    <title>Nutrition Calculator</title>
+  </head>
+  
+  <body>
+    <!-- Specify JavaScript source -->
+    <script src = "MainPageScript.js"></script>
+    <div id="container">
+      <div id="id_querypane">
+        <input type="text" id="id_itemName" list="itemNameDataList" placeholder="eg. Skippy SuperChunk" style="width:300px;">
+        <button type="button" onclick="QueryItemFromNutritionX()">+</button>
+      </div>
+      <div id="id_suggestionspanel">Loading response...</div>
+    </div>
+  </body>
+</html>

@@ -2,16 +2,16 @@ function QueryItemFromNutritionX()
 {
   var paramString='{"appId":"9ca93004", "appKey": "769a7bfd0563bf4e30441f56c4c833e2", "query": "Cheddar Cheese"}';
   var url = "https://api.nutritionix.com/v1_1/search";
-  LoadXml("POST",paramString,url,function()
+  CreateAndSendRequest("POST",paramString,url,function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-      document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+      document.getElementById("id_suggestionspanel").innerHTML=xmlhttp.responseText;
     }
   });
 }
 
-function LoadXml(requestType,paramString,url,cfunc)
+function CreateRequestObject()
 {
   if (window.XMLHttpRequest)
   {
@@ -21,7 +21,12 @@ function LoadXml(requestType,paramString,url,cfunc)
   else
   {// code for IE6, IE5
     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
+  }  
+}
+
+function CreateAndSendRequest(requestType,paramString,url,cfunc)
+{
+  CreateRequestObject();
 
   xmlhttp.onreadystatechange=cfunc;
 
@@ -35,5 +40,14 @@ function LoadXml(requestType,paramString,url,cfunc)
 
 function ItemNameResolver()
 {
-   document.getElementById("myDiv").innerHTML = "Hey there Delilah!";
+  var query = document.getElementById('id_itemName').value;
+  var paramString='{"appId":"9ca93004", "appKey": "769a7bfd0563bf4e30441f56c4c833e2", "limit":"10", "fields":["item_name", "nf_serving_size_unit"], "query":"' + query + '"}';
+  var url = "https://api.nutritionix.com/v1_1/search";
+  CreateAndSendRequest("POST",paramString,url,function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+      document.getElementById("id_suggestionspanel").innerHTML = hitsArray.length;
+    }
+  });
 }
