@@ -32,6 +32,7 @@ function QueryItemFromNutritionX()
               { item_id : itemIdResponse, item_name: itemNameResponse, brand_name: brandNameResponse, nf_serving_size_unit: servingSizeUnitResponse, nf_serving_size_qty: servingSizeQtyResponse, nf_servings_per_container: servingsPerContainerResponse}
         ];
         queryHash[i] = responseArrayList;
+        //alert(queryHash[0][0].nf_serving_size_unit);
       }
 
       $("#id_LoadResponseTxt").hide();
@@ -45,14 +46,22 @@ function AddClickEventToListItems()
   var lis = document.getElementById("id_ulist").getElementsByTagName('li');
 
   for (var i=0; i<lis.length; i++) {
-    lis[i].addEventListener('click', SetSelectedText, false);
+    lis[i].addEventListener('click', OnListItemClicked, false);
   }
 
-  function SetSelectedText() {
+  function OnListItemClicked() {
     if (!isResolved)
     {
-      alert($(this).index());
+      var listIndexSelected = $(this).index();
       document.getElementById('id_itemName').value = this.innerHTML;
+      $("#id_quantity").slideDown("fast");
+      var selectedItemUnit = queryHash[listIndexSelected][0].nf_serving_size_unit;
+      var servingSizeQuantity = parseFloat(queryHash[listIndexSelected][0].nf_serving_size_qty);
+      var servingsPerContainer = parseFloat(queryHash[listIndexSelected][0].nf_servings_per_container);
+      document.getElementById("id_unit").innerHTML = selectedItemUnit;
+      document.getElementById("id_qnty").value = servingSizeQuantity * servingsPerContainer;
+
+      document.getElementById("id_suggestionspanel").style.visibility='hidden';
     }
   }
 }

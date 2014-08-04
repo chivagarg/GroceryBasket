@@ -43,6 +43,10 @@
         padding: 0;
         text-align: left;
       }
+      #id_quantity
+      {
+        display:none; 
+      }
     </style>
     <title>Nutrition Calculator</title>
   </head>
@@ -53,6 +57,10 @@
     <div id="container">
       <div id="id_querypane">
         <input type="text" id="id_itemName" placeholder="eg. Skippy SuperChunk" style="width:400px;">
+        <span id="id_quantity"> 
+          <input id="id_qnty" type="text" style="width:40px;">
+          <span id="id_unit">unit</span>
+        </span>
         <button type="button" id="id_addButton" onclick="QueryItemFromNutritionX()">+</button>
       </div>
       <div id="id_suggestionspanel">
