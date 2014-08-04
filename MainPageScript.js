@@ -1,9 +1,10 @@
 var isResolved = false;
 var currentServingSizeUnit;
+var queryHash = {};
 function QueryItemFromNutritionX()
 {
   var query = document.getElementById('id_itemName').value;
-  var paramString='{"appId":"9ca93004", "appKey": "769a7bfd0563bf4e30441f56c4c833e2", "limit":"10", "fields":["item_name", "brand_name", "nf_serving_size_unit", "nf_serving_size_qty", "nf_servings_per_container"], "query":"' + query + '"}';
+  var paramString='{"appId":"9ca93004", "appKey": "769a7bfd0563bf4e30441f56c4c833e2", "limit":"10", "fields":["item_id", "item_name", "brand_name", "nf_serving_size_unit", "nf_serving_size_qty", "nf_servings_per_container"], "query":"' + query + '"}';
   var url = "https://api.nutritionix.com/v1_1/search";
   CreateAndSendRequest("POST",paramString,url,function()
   {
@@ -16,9 +17,21 @@ function QueryItemFromNutritionX()
       for (var i = 0; i < hitsArray.length; i++)
       {
         var listItem = document.createElement('li');
-        var textToDisplay = hitsArray[i].fields.item_name + " | " + hitsArray[i].fields.brand_name + " | " + " | " + hitsArray[i].fields.nf_serving_size_unit + " | " +  hitsArray[i].fields.nf_serving_size_unit + " | " + hitsArray[i].fields.nf_servings_per_container;
+        var itemNameResponse = hitsArray[i].fields.item_name;
+        var brandNameResponse = hitsArray[i].fields.brand_name;
+        var servingSizeQtyResponse = hitsArray[i].fields.nf_serving_size_qty;
+        var servingSizeUnitResponse = hitsArray[i].fields.nf_serving_size_unit;
+        var servingsPerContainerResponse = hitsArray[i].fields.nf_servings_per_container;
+        var itemIdResponse = hitsArray[i].fields.item_id;
+
+        var textToDisplay = itemNameResponse + " | " + brandNameResponse;
         listItem.appendChild(document.createTextNode(textToDisplay));
         list.appendChild(listItem);
+
+        var responseArrayList = [
+              { item_id : itemIdResponse, item_name: itemNameResponse, brand_name: brandNameResponse, nf_serving_size_unit: servingSizeUnitResponse, nf_serving_size_qty: servingSizeQtyResponse, nf_servings_per_container: servingsPerContainerResponse}
+        ];
+        queryHash[i] = responseArrayList;
       }
 
       $("#id_LoadResponseTxt").hide();
@@ -38,7 +51,7 @@ function AddClickEventToListItems()
   function SetSelectedText() {
     if (!isResolved)
     {
-      isResolved = true;
+      alert($(this).index());
       document.getElementById('id_itemName').value = this.innerHTML;
     }
   }
