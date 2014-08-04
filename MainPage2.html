@@ -17,7 +17,7 @@
          position: fixed;
          top:20%;
          left:50%;
-         margin-left: -150px;
+         margin-left: -200px;
       }
       #id_suggestionspanel,#id_querypane
       {
@@ -28,8 +28,20 @@
       }
       #id_suggestionspanel
       {
-        padding:25px;
+        padding:0px;
         display: none;
+      }
+      #id_ulist
+      {
+        list-style-type: none;
+        margin: 0px;
+        padding: 5px;
+      }
+      li
+      {
+        margin: 0;
+        padding: 0;
+        text-align: left;
       }
     </style>
     <title>Nutrition Calculator</title>
@@ -40,12 +52,12 @@
     <script src = "MainPageScript.js"></script>
     <div id="container">
       <div id="id_querypane">
-        <input type="text" id="id_itemName" list="itemNameDataList" placeholder="eg. Skippy SuperChunk" style="width:300px;">
+        <input type="text" id="id_itemName" placeholder="eg. Skippy SuperChunk" style="width:400px;">
         <button type="button" id="id_addButton" onclick="QueryItemFromNutritionX()">+</button>
       </div>
       <div id="id_suggestionspanel">
         <p id="id_LoadResponseTxt">Loading response...</p>
-        <ol id="id_olist"></ol>
+        <ul id="id_ulist"></ul>
       </div>
     </div>
   </body>
