@@ -17,7 +17,7 @@
          position: fixed;
          top:20%;
          left:50%;
-         margin-left: -200px;
+         margin-left: -270px;
       }
       #id_suggestionspanel,#id_querypane
       {
@@ -43,9 +43,17 @@
         padding: 0;
         text-align: left;
       }
-      #id_quantity
+      #id_quantitySpan
       {
         display:none; 
+      }
+      #id_checkoutButton
+      {
+
+      }
+      button
+      {
+        width: 70px;
       }
     </style>
     <title>Nutrition Calculator</title>
@@ -57,11 +65,12 @@
     <div id="container">
       <div id="id_querypane">
         <input type="text" id="id_itemName" placeholder="eg. Skippy SuperChunk" style="width:400px;">
-        <span id="id_quantity"> 
+        <span id="id_quantitySpan"> 
           <input id="id_qnty" type="text" style="width:40px;">
           <span id="id_unit">unit</span>
         </span>
-        <button type="button" id="id_addButton" onclick="QueryItemFromNutritionX()">+</button>
+        <button type="button" id="id_addButton" onclick="QueryItemFromNutritionX()">Lookup</button>
+        <button type="button" id="id_checkoutButton" onclick="Checkout()">Checkout</button>
       </div>
       <div id="id_suggestionspanel">
         <p id="id_LoadResponseTxt">Loading response...</p>
