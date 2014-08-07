@@ -52,7 +52,6 @@ function QueryItemFromNutritionX()
   else
   {
     // Resolved
-    alert("Cool");
     var dataList = queryHash[listIndexSelected][0];
     dataList.itemQuantity = parseFloat(document.getElementById("id_qnty").value);
 
@@ -74,7 +73,7 @@ function QueryItemFromNutritionX()
     while ( list.firstChild ) list.removeChild( list.firstChild );
     $("#id_LoadResponseTxt").show();
     document.getElementById("id_suggestionspanel").style.visibility='hidden';
-    alert(Object.keys(groceryBasket).length);
+    alert("Current basket size = " + Object.keys(groceryBasket).length);
   }
 }
 
@@ -146,7 +145,6 @@ function CreateAndSendRequest(requestType,paramString,url,cfunc)
 
 function tableCreate()
 {
-    alert("Hey there");
     document.getElementById("id_suggestionspanel").style.visibility='visible';
     document.getElementById("id_LoadResponseTxt").innerHTML = "Results"
     $("#id_suggestionspanel").slideDown("fast");
